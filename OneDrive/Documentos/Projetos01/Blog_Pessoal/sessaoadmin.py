@@ -17,8 +17,24 @@ class Artigos:
             else:
                   return []
             
+      def dump_arquivo(self):
+            try:
+                  with open (arquivo, 'w') as file:
+                        json.dump(self.artigos, file, indent= 4)
+            except:
+                  return f'erro'
+      
+      def carregar_arquivo():
+            try:
+                  with open(arquivo, 'w') as file:
+                        json.load(file)
+            except:
+                  return f'erro'
             
       def criar_artigo(self):
+            
+            self.carregar_artigos()
+            
             titulo = input('Titulo:')
             data = data_hj
             descricao = input('Descricao:')
@@ -31,11 +47,10 @@ class Artigos:
                    }
       
             self.artigos.append(artigo)
+            self.dump_arquivo()
             
       def listar_artigo(self):
-            arquivos = arquivo()
-            for artigo in arquivos:
-                  print(artigo)
+            sel
                   
       def update_artigo(self):
             id = int(input('id: '))

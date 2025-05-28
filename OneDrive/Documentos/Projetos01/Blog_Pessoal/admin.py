@@ -1,11 +1,12 @@
 class Admin:
-      def __init__(self, nome, usuario, senha):
-            self.nome = nome
-            self.usuario = usuario
-            self._senha = senha
+      def __init__(self):
+            self.nome = 'admin'
+            self.usuario = 'adimn'
+            self._senha = '12345'
             
       def autenticacao(self, usuario, senha):
            if self.usuario == usuario and self._senha == senha:
-                 print('Bem vindo')
+                 return True
            else:
-                 return f'Erro'
+                 return print(f'Erro! Login ou senha incorretos.')
+           

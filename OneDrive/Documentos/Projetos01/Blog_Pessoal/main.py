@@ -1,16 +1,39 @@
+from admin import Admin
 from sessaoadmin import Artigos
 
-blog = Artigos()
+adm = Admin()
+artigo = Artigos()
 
-def main():
-      print('1- Criar Post')
-      print('0- Sair')
+def admin():
+      usuario = input('usuario: ')
+      senha = input('senha: ')
+      validacao = adm.autenticacao(usuario,senha)
       
-      while True:
-            opcao = int(input('Opção: '))
-            if opcao == 1:
-                  blog.criar_artigo()
+      if validacao == True:
+            print('1- criar artigos')
+            print('2- atualizar artigo')
+            print('3- deletar artigo')
             
-            if opcao == 0:
-                  break            
-main()
+            opcao = int(input('opcao: '))
+            if opcao == 1:
+                  artigo.criar_artigo()
+            
+      else:
+            print('erro')
+            
+def visitante():
+      artigo.visualiza()
+
+while True:
+      print('1- admin')
+      print('2- visitante')
+      
+      op = int(input('Opção: '))
+      
+      if op == 1:
+            admin()
+      if op == 2:
+            pass
+      if op == 0:
+            break
+      
