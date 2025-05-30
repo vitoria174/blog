@@ -8,13 +8,18 @@ arquivo = 'arquivos.json'
 class Artigos:
       
       def __init__(self):
-            self.artigos = self.carregar_artigos()
+            self.artigos = self.arquivo_json()
             
-      def carregar_artigos(self):
-            if not os.path.exists(arquivo):
-                  with open(arquivo, 'w') as file:
-                        json.load(file)
+      def arquivo_json(self):
+            if os.path.exists(arquivo):
+                  with open(arquivo, 'r') as file:
+                        try:
+                              return json.load(file)
+                        except json.JSONDecodeError:
+                              return []
             else:
+                  with open(arquivo, 'r') as file:
+                        json.dump([], file)
                   return []
             
       def dump_arquivo(self):
@@ -33,7 +38,7 @@ class Artigos:
             
       def criar_artigo(self):
             
-            self.carregar_artigos()
+            self.arquivo_json()
             
             titulo = input('Titulo:')
             data = data_hj
@@ -48,9 +53,11 @@ class Artigos:
       
             self.artigos.append(artigo)
             self.dump_arquivo()
-            
-      def listar_artigo(self):
-            sel
+      
+      def visualiza(self):
+            for i in self.artigos:
+                  print
+                  
                   
       def update_artigo(self):
             id = int(input('id: '))

@@ -17,6 +17,9 @@ def admin():
             opcao = int(input('opcao: '))
             if opcao == 1:
                   artigo.criar_artigo()
+                  artigo.visualiza()
+            if opcao == 2:
+                  artigo.update_artigo()
             
       else:
             print('erro')
