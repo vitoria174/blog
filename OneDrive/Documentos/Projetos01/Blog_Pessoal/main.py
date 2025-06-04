@@ -1,8 +1,8 @@
 from admin import Admin
-from sessaoadmin import Artigos
+from sessaoadmin import Artigo
 
 adm = Admin()
-artigo = Artigos()
+artigo = Artigo()
 
 def admin():
       usuario = input('usuario: ')
@@ -17,7 +17,7 @@ def admin():
             opcao = int(input('opcao: '))
             if opcao == 1:
                   artigo.criar_artigo()
-                  artigo.visualiza()
+                  
             if opcao == 2:
                   artigo.update_artigo()
             
