@@ -1,60 +1,58 @@
 from datetime import datetime
-class Artigo:
+
+
+class Article:
       def __init__(self):
-            self.artigos = []
+            self.article = []
+      
+      #criar um artigo      
+      def create_article(self):
+            id = len(self.article) + 1
+            title = str(input('Titulo: '))
+            description = str(input('Descricao: '))
             
-      def criar_artigo(self):
-            id = len(self.artigos) + 1
-            titulo = str(input('Titulo: '))
-            descricao = str(input('Descricao: '))
-            
-            artigo = {
+            article = {
                   'id':id,
-                  'data':str(datetime.today()),
-                  'titulo':titulo,
-                  'descricao':descricao
+                  'data':str(datetime.now().date()),
+                  'title':title,
+                  'description':description
             }
             
-            self.artigos.append(artigo)
-            
-      def ler_artigo(self):
+            self.article.append(article)
+      
+      #leitura de artigo      
+      def read_article(self):
             print('-----lISTA ARTIGOS-----')
-            for artigo in self.artigos:
-                  print(f'Titulo: {artigo['titulo']}', end=' ')
-                  print(f'Descricao: {artigo['descricao']}', end=' ')
-                  print(f'Data: {artigo['data']}',end=' ')
+            print('ID \t',end=' ')
+            print('Titulo\t',end=' ')
+            print('Descrição \t',end=' ')
+            print('Data \t')
+            for article in self.article:
+                  print(f'{article['id']}\t',end=' ')
+                  print(f'{article['title']}\t', end=' ')
+                  print(f'{article['description']}\t', end=' ')
+                  print(f'{article['data']}\t',end=' ')
                   print()
-                  
-      def atualizar_artigo(self):
-            atualizar_id = int(input('Atualizar por ID: '))
+      
+      #atualiza os artigos criados
+      def update_article(self):                 
+            update_id = int(input('Atualiar por Id: '))
             
-            for id_artigo, conteudo_artigo in enumerate(self.artigos):
-                  if atualizar_id == id_artigo+1:
-                        titulo = input('titulo: ')
-                        descricao = input('descricao: ')
-                        data_atuaizada = str(datetime.today())
+            for c, i in enumerate(self.article):
+                  if i['id'] == update_id:
+                        new_title = input('titulo: ')
+                        new_description = input('Descricao: ')
+                        i['title']=new_title
+                        i['description']=new_description
+                        i['data']=str(datetime.now().date())
+                        print('Artigo atualizado')
+                 
+                  
                         
-                        artigo ={
-                              'titulo':titulo,
-                              'descricao':descricao,
-                              'data':data_atuaizada
-                        }
-                        self.artigos[id_artigo]=artigo
+      def delete_artigo(self):
+            delete_for_id =int(input('Deletar por ID: '))
+            
+            for indice, article in enumerate(self.article):
+                  if article['id'] == delete_for_id:
+                        del self.article[indice]
                         
-      def deletar_artigo(self):
-            deletar_por_id = int(input('Deletar por id: '))
-                  
-            for id_deleta, deletar_artigo in enumerate(self.artigos):
-                  if deletar_por_id == id_deleta+1:
-                        del(self.artigos[deletar_por_id])
-                  
-                  
-c = Artigo()
-c.criar_artigo()
-c.criar_artigo()
-c.criar_artigo()
-c.ler_artigo()
-c.atualizar_artigo()
-c.ler_artigo()
-c.deletar_artigo()
-c.ler_artigo()
