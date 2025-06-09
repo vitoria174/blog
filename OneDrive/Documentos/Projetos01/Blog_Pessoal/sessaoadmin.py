@@ -6,19 +6,16 @@ class Article:
             self.article = []
       
       #criar um artigo      
-      def create_article(self):
-            id = len(self.article) + 1
-            title = str(input('Titulo: '))
-            description = str(input('Descricao: '))
+      def create_article(self,title,description):
             
             article = {
-                  'id':id,
+                  'id':len(self.article)+1,
                   'data':str(datetime.now().date()),
                   'title':title,
                   'description':description
             }
             
-            self.article.append(article)
+            return article
       
       #leitura de artigo      
       def read_article(self):
@@ -33,6 +30,7 @@ class Article:
                   print(f'{article['description']}\t', end=' ')
                   print(f'{article['data']}\t',end=' ')
                   print()
+            return self.article
       
       #atualiza os artigos criados
       def update_article(self):                 
